@@ -1,4 +1,6 @@
 #ifndef SMQTT_CLIENT_H
 #define SMQTT_CLIENT_H
 
+
+
 #endif //SMQTT_CLIENT_H

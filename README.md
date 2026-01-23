@@ -1,1 +1,1 @@
-secure variant of mqtt 5.0
+secure variant of mqtt
