@@ -21,7 +21,7 @@
 #define CMD_PINGRESP 0xD0U
 #define CMD_DISCONNECT 0xE0U
 #define CMD_AUTH 0xF0U
-
+#include <stdint.h>
 
 /**
  * Values:
@@ -40,5 +40,20 @@ enum smqtt_connack_codes {
 	CONNACK_REFUSED_BAD_USERNAME_PASSWORD = 4,
 	CONNACK_REFUSED_NOT_AUTHORIZED = 5,
 };
+
+typedef struct smqtt_pkt {
+	uint8_t *payload;
+	struct smqtt_pkt *next;
+	uint64_t seq_num;
+
+	uint32_t remaining_len_multi;
+	uint32_t remaining_len;
+	uint32_t pkt_total_len;
+	uint32_t bytes_to_process;
+	uint32_t payload_pos;
+
+	uint8_t fixed_header;
+	uint8_t remaining_len_count;
+} smqtt_pkt;
 
 #endif //SMQTT_PROTOCOL_H
